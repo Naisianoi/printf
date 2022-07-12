@@ -8,66 +8,36 @@
 
 int _printf(const char *format, ...)
 {
-	int crs;
-	va_list list;
+	int p_crs;
 
-	va_start(list, format);
-	if (format == NULL)
-		return (-1);
-	crs = charsFormats(format, list);
-
-	va_end(list);
-	return (crs);
-}
-
-/**
- * charsFormats - paremters printf
- * @format: list of arguments
- * @args: listing
- * Return: value of print
- */
-
-int charsFormats(const char *format, va_list args)
-{
-	int x, y, crs, zxl;
-
-	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string},
-		{"%", _percent}, {"d", _integer}, {"i", _integer}, {NULL, NULL}
+	convert_t f_list[BUFFSIZE] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent},
+		{"d", print_decimal},
+		{"i", print_integer},
+		{"x", _hex_l},
+		{"X", _hex_u},
+		{"p", _hex_l},
+		{"S", print_string},
+		{"r", print_r},
+		{"R", rot_13},
+		{"b", print_binary},
+		{"u", print_unint},
+		{"o", print_octal},
+		{NULL, NULL},
 	};
-	crs = 0;
-	for (x = 0; format[x] != '\0'; ++x)
+	va_list arg_list;
+
+	if (format == NULL)
+	
 	{
-		if (format[x] == '%')
-		{
-			for (y = 0; f_list[y].sym != NULL; ++y)
-			{
-				if (format[x + 1] == f_list[y].sym[0])
-				{
-					zxl = f_list[y].f(args);
-					if (zxl == -1)
-						return (-1);
-					crs += zxl;
-					break;
-				}
-			}
-			if (f_list[y].sym == NULL && format[x + 1] != ' ')
-			{
-				if (format[x + 1] != '\0')
-				{
-					_putchar(format[x]);
-					_putchar(format[x + 1]);
-					crs = crs + 2;
-				}
-				else
-					return (-1);
-			}
-			x += 1:
-		}
-		else
-		{
-			_putchar(format[x]);
-			crs++;
-		}
+		return (-1);
 	}
-	return (crs);
-}
+
+	va_start(arg_list, format);
+	/*fumc to be called*/
+	p_crs = parser(format, f_list, arg_list);
+
+	va_end(arg_list);
+	return (p_crs);
