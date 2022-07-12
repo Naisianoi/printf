@@ -9,6 +9,8 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stddef.h>
+
 #define BUFFSIZE 1024
 
 /**
