@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stddef.h>
 
 /**
  * _printf - produces output according to a format.
@@ -8,7 +10,7 @@
 
 int _printf(const char *format, ...)
 {
-	int p_crs;
+	int printed_chars;
 
 	convert_t f_list[BUFFSIZE] = {
 		{"c", print_char},
@@ -37,7 +39,7 @@ int _printf(const char *format, ...)
 
 	va_start(arg_list, format);
 	/*fumc to be called*/
-	p_crs = parser(format, f_list, arg_list);
+	printed_chars = parser(format, f_list, arg_list);
 
 	va_end(arg_list);
 	return (p_crs);
