@@ -1,0 +1,159 @@
+.TH man 1 "12 July 2022" "0.32" "_printf() man page"
+
+.Sa NAME
+
+.B _printf
+
+- prints data according to a format.
+
+.SH SYNOPSIS
+
+_printf FORMAT [ARGUMENT]...
+
+.SH PROTOTYPE
+
+int _printf(const char* format, ...);
+
+.SH DESCRIPTION
+
+printf (FORMAT, ARGUMENT)...
+
+.PP
+
+.BI "#include 'main.h'
+
+.BI "#include <stdarg.h>"
+
+.BI "#include <unistd.h>"
+
+.PP
+
+.BI "int _printf(const char *format, ...);"
+
+.BI "int print_prg(va_list __attribute__((unused)), char *, unsigned int);"
+
+.BI "int print_chr(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int print_str(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int print_int(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int print_bnr(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int print_unt(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int print_oct(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int print_hex(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int print_upx(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int print_usr(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int print_add(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int print_rev(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int print_rot(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinlint(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinlunt(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinloct(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinlhex(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinlupx(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinhint(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinhunt(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinhoct(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinhhex(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinhupx(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinpint(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinnoct(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinnhex(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinnupx(va_list arguments, char *buf, unsigned int ibuf);"
+
+.BI "int prinsint(va_list arguments, char *buf, unsigned int ibuf);"
+
+.PP
+
+.BI "int (*get_print_func(const char *s, int index))(va_list, char *, unsigned int);"
+
+.BI "int ev_print_func(const char *s, int index);"
+
+.PP
+
+.BI "unsigned int handl_buf(char *buf, char c, unsigned int ibuf);"
+
+.BI "int print_buf(char *buf, unsigned int nbuf);"
+
+.PP
+
+.BI "char *fill_binary_array(char *binary, long int int_in, int isneg, int limit);"
+
+.BI "char *fill_oct_array(char *bnr, char *oct);"
+
+.BI "char *fill_long_oct_array(char *bnr, char *oct);"
+
+.BI "char *fill_short_oct_array(char *bnr, char *oct);"
+
+.BI "char *fill_hex_array(char *bnr, char *hex, int isupp, int limit);"
+
+.PP
+Print ARGUMENT(s) according to FORMAT, or execute according to OPTION:
+
+We use the function printf() with % followed by the type of format specifier, to show the value of the variable.
+
+Format specifier is used during input and output. It is a way to tell the compiler what type of data is in a variable during taking input using _printf(). Some examples are %c, %d, %i, etc.
+
+%i - substitude for a value an integer variable,
+
+%d - substitude for a value an integer variable decimal base 10,
+
+%c - substitude for a value of a character variable,
+
+%s - substitude for a value of a string variable,
+
+%% - substitude for a single '%'.
+
+.SH RETURN VALUE
+
+Upon successful return, This function return the number of characters written, excluding the terminating null character used to end the string.
+
+.SH SEE ALSO
+
+.I printf(3).
+
+.SH BUGS
+
+No known bugs.
+
+#include ''main.h''
+
+int main(void)
+
+{
+
+	int length;
+
+	_printf(''%s'', ''Hello, Alx!'')
+
+	_printf(''Hello Alx! contains %d characters'', length);
+
+	length = _printf(''Hello Alx!'');
+
+	return (0);
+}
+.SH AUTHOR
+Gladys Naisianoi, Frankley Omwenga
