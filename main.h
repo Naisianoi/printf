@@ -24,5 +24,7 @@ int _percent(va_list list);
 int _char(va_list list);
 int _string(va_list list);
 int _integer(va_list list);
+int b_print(va_list args);
+int c_print(va_list args);
 
 #endif
